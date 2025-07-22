@@ -13,5 +13,5 @@ void main() {
   printf("Enter the radius of the circle: ");
   scanf("%f", &radius);
 
-  printf("The circumference of the circle is %f\n", (2 * pi * radius));
+  printf("The circumference of the circle is %f\n",   pi * (radius *2));
 }
