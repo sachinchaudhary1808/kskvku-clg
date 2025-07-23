@@ -1,9 +1,7 @@
 /* Copyright by: Sachin
-Date: 
-CP(1): */
+Date:
+CP(3): bitwise operator*/
 
 #include <stdio.h>
 
-void main() {
-
-}
+void main() {}
