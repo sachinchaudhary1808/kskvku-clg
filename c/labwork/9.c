@@ -23,3 +23,5 @@ void main() {
 
   printf("variables after swap %d, %d\n", a, b);
 }
+
+// Sir will teach how to do it with only 2 variables
