@@ -4,31 +4,35 @@
 <head>
     <title>Document</title>
     <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
         table {
             border-collapse: collapse;
-            font-size: 15px;
             border: 3px dashed #cc6600;
         }
 
         th {
-            text-align: left;
             background-color: #ff9933;
-            color: #ffffff;
-            padding-left: 5px;
-            padding-right: 30px;
-            border: 2px dashed #ffcc99;
+            color: white;
+            border: 1px dashed #ffcc99;
         }
 
         td {
-            padding-left: 5px;
+            border: 1px dashed #ffcc99;
+        }
+
+        td,
+        th {
+            padding: 8px;
             padding-right: 30px;
-            border: 2px dashed #ffcc99;
         }
     </style>
 </head>
 
 <body>
-    <table border="1" cellpadding="10">
+    <table border="3">
         <tr>
             <th>Product Name</th>
             <th>Price</th>
