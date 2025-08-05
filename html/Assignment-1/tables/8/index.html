@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nested Table</title>
+    <style>
+      .outer-table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 2px solid black;
+      }
+
+      .outer-table th {
+        background-color: darkseagreen;
+        color: white;
+      }
+      .outer-table th,
+      .outer-table td {
+        border: 1px solid darkseagreen;
+        text-align: left;
+      }
+
+      .inner-table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .inner-table th {
+        background-color: #d1b488;
+        color: black;
+      }
+      .inner-table td {
+        color: #8b4512;
+      }
+      .inner-table th,
+      .inner-table td {
+        padding: 5px;
+        border: 2px dotted #a52929;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table class="outer-table">
+      <tr>
+        <th>Department</th>
+        <th>Employees</th>
+      </tr>
+      <tr>
+        <td>Sales</td>
+        <td>
+          <table class="inner-table">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+            <tr>
+              <td>Sarah</td>
+              <td>Manager</td>
+            </tr>
+            <tr>
+              <td>David</td>
+              <td>Sales Rep</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Marketing</td>
+        <td>
+          <table class="inner-table">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+            <tr>
+              <td>Emily</td>
+              <td>Marketing Mgr</td>
+            </tr>
+            <tr>
+              <!-- idk why -->
+              <td>Ubed</td>
+              <td>Content Creator</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>Engineering</td>
+        <td>
+          <table class="inner-table">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+            </tr>
+            <tr>
+              <td>Mike</td>
+              <td>Lead Eng.</td>
+            </tr>
+            <tr>
+              <td>Lisa</td>
+              <td>Devloper</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
