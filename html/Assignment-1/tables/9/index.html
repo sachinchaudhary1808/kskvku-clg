@@ -3,14 +3,9 @@
 <head>
     <title>Nested Table</title>
     <style>
-        table td,
-        th {
-            padding: 10px;
-        }
-
         .main-table {
             border-collapse: collapse;
-            border: 3px double #3f3f9e;
+            border: 4px double #3f3f9e;
         }
 
         .main-table th {
@@ -21,12 +16,15 @@
         .main-table th,
         .main-table td {
             border: 2px solid #abd6e5;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
         }
 
         .inner-table {
             border-collapse: collapse;
             border: 2px solid #94210f;
-            width: 100%;
+            /* width: 100%; */
         }
 
         .inner-table th {
@@ -40,7 +38,12 @@
 
         .inner-table th,
         .inner-table td {
-            border: 1px dotted #d2691e;
+            border: 2px dotted #d2691e;
+        }
+
+        .main-table td>.inner-table {
+            margin: -10px;
+            /* cancels out parent td padding */
         }
     </style>
 </head>

@@ -3,8 +3,110 @@
 
 <head>
     <title>Complex Layout Challaenge</title>
+    <style>
+        th {
+            background-color: #a0522d;
+            color: white;
+            text-align: center;
+            text-align: center;
+        }
+
+        table {
+            border: 3px solid #8b4513;
+            border-spacing: 5px;
+            table-layout: fixed;
+            width: 600px;
+        }
+
+        .td-head {
+            background-color: #d2b48c;
+            font-weight: 400;
+        }
+
+        th {
+            padding: 10px;
+        }
+
+        td {
+            padding: 5px 10px 5px 5px;
+            border: 1px solid #d2b48c;
+            vertical-align: top;
+        }
+    </style>
 </head>
 
-<body></body>
+<body>
+    <table>
+        <tr>
+            <th colspan="6">Invoice #2025-07-001</th>
+        </tr>
+        <tr class="td-head">
+            <td colspan="3">Date</td>
+            <td colspan="3">Customer Information</td>
+        </tr>
+        <tr>
+            <td colspan="3">2025-07-26</td>
+            <td colspan="3">
+                John Q. Customer <br />
+                123 Main St,Anytown, USA
+            </td>
+        </tr>
+        <tr>
+            <th colspan="6" style="text-align: left; padding: 5px 5px 5px 10px">
+                Order Details
+            </th>
+        </tr>
+        <tr class="td-head">
+            <td colspan="3">Description</td>
+            <td>Qty</td>
+            <td>Unit Price</td>
+            <td>Total</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="padding: 5px">Product A (With componenets)</td>
+            <td>1</td>
+            <td>$150.00</td>
+            <td>$150.00</td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <table style="width: 100%; border: none; border-collapse: collapse">
+                    <tr>
+                        <th style="
+                  background-color: #eedd82;
+                  color: black;
+                  text-align: left;
+                " colspan="2">
+                            Component of Product A
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>- Component X</td>
+                        <td>(Qty: 2)</td>
+                    </tr>
+                    <tr>
+                        <td>- Component y</td>
+                        <td>(Qty: 1)</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">Product B</td>
+            <td>2</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+        </tr>
+        <tr>
+            <td colspan="3">Shipping</td>
+            <td colspan="2"></td>
+            <td>$15.00</td>
+        </tr>
+        <tr>
+            <th colspan="5" style="text-align: right">Grand-total:</th>
+            <th>$265.00</th>
+        </tr>
+    </table>
+</body>
 
 </html>
