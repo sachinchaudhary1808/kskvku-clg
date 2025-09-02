@@ -28,14 +28,25 @@ void main() {
 			case 2:
 				printf("\nDeposite amount: ");
 				scanf("%d",&amount);
+
+				if (amount < 1) {
+					printf("Plz enter a valid amount");
+				} else{
 				balance = balance + amount;
 				printf("\nMoney Deposited, New Amount is: %d",balance);
+				}
 				break;
 			case 3:
 				printf("\nWithdraw amount: ");
 				scanf("%d",&amount);
+
+				if (amount < 1) {
+					printf("Plz enter a valid amount");
+				} else{
 				balance = balance - amount;
 				printf("\nMoney Withdrawed, New Amount is: %d",balance);
+				}
+
 				break;
 			case 4:
 				return;
