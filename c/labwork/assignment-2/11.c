@@ -19,7 +19,6 @@ void main() {
   printf("Enter the Second number: ");
   scanf("%f", &b);
 
-
   switch (operator) {
   case '+':
     printf("%.2f + %.2f = %.2f", a, b, (a + b));

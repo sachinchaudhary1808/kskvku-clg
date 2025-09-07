@@ -7,16 +7,16 @@
 
 #include <stdio.h>
 
-void main(){
-	int num, i = 0, sum = 0;
+void main() {
+  int num, i = 0, sum = 0;
 
-	printf("Enter a Number: ");
-	scanf("%d",&num);
+  printf("Enter a Number: ");
+  scanf("%d", &num);
 
-	while (i<=num){
-		sum += i;
-		i++;
-	}
+  while (i <= num) {
+    sum += i;
+    i++;
+  }
 
-	printf("%d",sum);
+  printf("%d", sum);
 }

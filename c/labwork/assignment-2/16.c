@@ -6,14 +6,14 @@
 
 #include <stdio.h>
 
-void main(){
-	int num, i = 1;
+void main() {
+  int num, i = 1;
 
-	printf("Enter the number: ");
-	scanf("%d",&num);
+  printf("Enter the number: ");
+  scanf("%d", &num);
 
-	while (i <= num){
-		printf("%d\n",i);
-		i++;
-	}
+  while (i <= num) {
+    printf("%d\n", i);
+    i++;
+  }
 }

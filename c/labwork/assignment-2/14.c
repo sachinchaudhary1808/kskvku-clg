@@ -11,10 +11,10 @@ void main() {
   char character;
 
   printf("Enter a Character to check whether it's a vowel or a consonant: ");
-  scanf(" %c", &character);
+  scanf("%c", &character);
 
-  if (character >= 'A' && character <= 'Z'){
-	  character += 32;
+  if (character >= 'A' && character <= 'Z') {
+    character += 32;
   }
 
   switch (character) {

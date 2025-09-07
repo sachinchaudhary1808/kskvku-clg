@@ -16,28 +16,23 @@ void main() {
   scanf("%f", &total_subject);
 
   percentage = (total_marks / (total_subject * 100)) * 100;
-  printf("%f\n",percentage);
+  printf("%f\n", percentage);
 
   if (percentage >= 90 && percentage <= 100) {
-	  printf("A++++cooool");
+    printf("A++++cooool");
   } else if (percentage >= 80 && percentage < 90) {
-	  printf("A");
-  }else if (percentage >= 70 && percentage < 80) {
-	  printf("B");
-  }else if (percentage >= 60 && percentage < 70) {
-	  printf("C");
-  }else if (percentage >= 50 && percentage < 60) {
-	  printf("D");
-  }else if (percentage >= 33 && percentage < 50) {
-	  printf("E");
-  }else if (percentage >= 0 && percentage < 33) {
-	  printf("You failed");
-  }else {
-	  printf("Plz give valid number");
+    printf("A");
+  } else if (percentage >= 70 && percentage < 80) {
+    printf("B");
+  } else if (percentage >= 60 && percentage < 70) {
+    printf("C");
+  } else if (percentage >= 50 && percentage < 60) {
+    printf("D");
+  } else if (percentage >= 33 && percentage < 50) {
+    printf("E");
+  } else if (percentage >= 0 && percentage < 33) {
+    printf("You failed");
+  } else {
+    printf("Plz give valid number");
   }
-
-
-
-
-
 }

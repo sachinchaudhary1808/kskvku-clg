@@ -1,7 +1,7 @@
 /*
  * Copyright by: Sachin
- * Date: 2025-28-28 12:14 pm
- * PS(9): Write a C program to check whether a number is prime or not using a
+ * Date: 2025-08-28 12:14 pm
+ * PS(9): Write a C program to check whether a number is prime or not, using a
  * while loop.
  */
 
