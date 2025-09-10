@@ -14,9 +14,9 @@ void main() {
 
   temp = num;
 
-  while (temp > 0){
-	  result *= temp;
-	  temp -= 1;
+  while (temp > 0) {
+    result *= temp;
+    temp -= 1;
   }
-  printf("%d",result);
+  printf("%d", result);
 }

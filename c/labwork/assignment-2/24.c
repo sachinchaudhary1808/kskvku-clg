@@ -8,23 +8,22 @@
 #include <stdio.h>
 
 void main() {
-  int N, currunt = 0, pre = 1, pre2 = 0, i = 3;
+  int N, i = 0, pre = 0, pre2 = 1, currunt;
 
-  printf("Enter the number: ");
+  printf("Enter a number: ");
   scanf("%d", &N);
 
-  if (N >= 1) {
-    printf("%d\n", pre2);
-  }
-  if (N >= 2) {
-    printf("%d\n", pre);
-  }
-
-  while (i <= N) {
-    currunt = pre + pre2;
-    pre2 = pre;
-    pre = currunt;
+  int count = 1;
+  while (i < N) {
+    if (i <= 1) {
+      printf("(%d) %d ", count, i);
+    } else {
+      currunt = pre2 + pre;
+      pre = pre2;
+      pre2 = currunt;
+      printf("(%d) %d ", count, currunt);
+    }
     i++;
-    printf("%d\n", currunt);
+    count++;
   }
 }

@@ -8,31 +8,24 @@
 #include <stdio.h>
 
 void main() {
-  int N, num = 3, i = 2, flag = 0;
+	int N, isprime = 1, i = 2, num = 2;
 
-  printf("Enter how many prime numbers u wanna print: ");
-  scanf("%d", &N);
+	printf("Enter the number N: ");
+	scanf("%d",&N);
 
-  if (N >= 3){
-	  printf("2\n");
-  }
-
-  while (num < N) {
-
-    while (i <= num / 2) {
-      if (num % i == 0) {
-        flag = 1;
-        break;
-      }
-      i++;
-    }
-
-    if (flag == 0) {
-      printf("%d\n", num);
-    }
-
-    flag = 0;
-    i = 2;
-    num++;
-  }
+	while (num < N) {
+		while(i < num){
+			if (num % i == 0){
+				isprime = 0;
+				break;
+			}
+			i++;
+		}
+		if(isprime == 1){
+			printf("%d\n",num);
+		}
+		num++;
+		isprime = 1;
+		i = 2;
+	}
 }

@@ -7,16 +7,16 @@
 #include <stdio.h>
 
 void main() {
-	int a, b, gcd = 0, i = 1;
+	int a,b,gcd,i = 1;
 
-	printf("Enter the First number: ");
+	printf("Enter number a: ");
 	scanf("%d",&a);
 
-	printf("Enter the Second number: ");
+	printf("Enter number b: ");
 	scanf("%d",&b);
 
 	while (i <= a && i <= b){
-		if (a % i == 0 && b % i == 0 ){
+		if (a % i == 0 && b % i == 0){
 			gcd = i;
 		}
 		i++;

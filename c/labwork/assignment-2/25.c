@@ -8,15 +8,15 @@
 #include <stdio.h>
 
 void main() {
-  int number, digits = 0, ori_num;
+  int num, digits = 0, ori_num;
 
-  printf("Enter the digits: ");
-  scanf("%d", &number);
+  printf("Enter the number: ");
+  scanf("%d", &num);
 
-  ori_num = number;
+  ori_num = num;
 
-  while (number > 0) {
-    number /= 10;
+  while (num > 0) {
+    num /= 10;
     digits++;
   }
 

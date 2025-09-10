@@ -6,25 +6,25 @@
 
 #include <stdio.h>
 
-void main(){
-	int a, b , lcm ;
+void main() {
+  int a, b, lcm;
 
-	printf("Enter the number a: ");
-	scanf("%d",&a);
-	printf("Enter the number b: ");
-	scanf("%d",&b);
+  printf("Enter the number a: ");
+  scanf("%d", &a);
+  printf("Enter the number b: ");
+  scanf("%d", &b);
 
-	if (a == 0 || b == 0){
-		printf("The lcm is zero");
-	}
+  if (a == 0 || b == 0) {
+    printf("The lcm is zero");
+  }
 
-	lcm = a>b ? a:b;
+  lcm = a > b ? a : b;
 
-	while (1){
-		if (lcm % a == 0 && lcm % b == 0){
-			printf("%d is The GOAT",lcm);
-			break;
-		}
-		lcm++;
-	}
+  while (1) {
+    if (lcm % a == 0 && lcm % b == 0) {
+      printf("%d is The GOAT", lcm);
+      break;
+    }
+    lcm++;
+  }
 }
