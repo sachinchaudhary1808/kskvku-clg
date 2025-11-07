@@ -8,11 +8,51 @@
 #include <stdio.h>
 
 void main() {
-  int option, balance = 150, amount;
+  int option, balance = 150, amount, pin;
 
   printf("Welcome to the ATM!\n");
 
   do {
+    printf("Enter pin to unlock the ATM: ");
+    scanf("%d", &pin);
+    if (pin == 2580) {
+      switch (option) {
+      case 1:
+        printf("Balance: %d\n", balance);
+        break;
+      case 2:
+        printf("\nDeposite amount: ");
+        scanf("%d", &amount);
+
+        if (amount < 1) {
+          printf("Plz enter a valid amount");
+        } else {
+          balance = balance + amount;
+          printf("\nMoney Deposited, New Amount is: %d", balance);
+        }
+        break;
+      case 3:
+        printf("\nWithdraw amount: ");
+        scanf("%d", &amount);
+
+        if (amount < 1) {
+          printf("Plz enter a valid amount");
+        } else {
+          balance = balance - amount;
+          printf("\nMoney Withdrawed, New Amount is: %d", balance);
+        }
+
+        break;
+      case 4:
+        return;
+        break;
+      default:
+        printf("Choose an valid option");
+      }
+
+    } else {
+      return;
+    }
     printf("\nATM Menu:\n");
     printf("\t(1)Balance check\n");
     printf("\t(2)Deposit\n");
@@ -20,38 +60,5 @@ void main() {
     printf("\t(4)Exit\n: ");
     scanf("%d", &option);
 
-    switch (option) {
-    case 1:
-      printf("Balance: %d\n", balance);
-      break;
-    case 2:
-      printf("\nDeposite amount: ");
-      scanf("%d", &amount);
-
-      if (amount < 1) {
-        printf("Plz enter a valid amount");
-      } else {
-        balance = balance + amount;
-        printf("\nMoney Deposited, New Amount is: %d", balance);
-      }
-      break;
-    case 3:
-      printf("\nWithdraw amount: ");
-      scanf("%d", &amount);
-
-      if (amount < 1) {
-        printf("Plz enter a valid amount");
-      } else {
-        balance = balance - amount;
-        printf("\nMoney Withdrawed, New Amount is: %d", balance);
-      }
-
-      break;
-    case 4:
-      return;
-      break;
-    default:
-      printf("Choose an valid option");
-    }
   } while (option != 4);
 }
