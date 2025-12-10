@@ -32,16 +32,16 @@ void main() {
       }
     }
   }
-  // result
   for (i = 0; i < arows; i++) {
     for (j = 0; j < bcolums; j++) {
-      for (k = 0; k < acolums; k++) {
+      for (k = 0; k < brows; k++) {
         sum += a[i][k] * b[k][j];
       }
       product[i][j] = sum;
       sum = 0;
     }
   }
+  // result
   // printing result
   for (i = 0; i < arows; i++) {
     for (j = 0; j < bcolums; j++) {

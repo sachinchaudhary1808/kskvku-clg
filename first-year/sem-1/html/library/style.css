@@ -1,0 +1,12 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+    color: teal;
+    border: 2px dotted orange;
+}
+p {
+    color: black;
+}
