@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <input type="radio" name = "gender" value="Male"> Male 
+        <input type="radio" name = "gender" value="Female"> Female
+        <input type="radio" name = "gender" value="3rd Gender"> 3rd Gender
+
+        <button onclick="checkGender()">Submit</button>
+            <br>
+    </body>
+
+    <script>
+    function checkGender(){
+        let radios = document.getElementsByName("gender")
+        
+        let selected = false;
+
+        for(let i = 0;i<radios.length; i++){
+            if(radios[i].checked){
+                selected = true;
+                alert("Selected " + radios[i].value);
+                break;
+
+            }
+
+        }
+        if(!selected){
+            alert("None is selected")
+    }
+    }
+    </script>
+
+</html>

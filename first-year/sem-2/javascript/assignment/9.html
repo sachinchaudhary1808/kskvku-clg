@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <body>
+        <input id="first" placeholder="Enter First Number" type="number" />
+        <input id="second" placeholder="Enter Second Number" type="number" />
+        <input id="third" placeholder="Enter Third Number" type="number" />
+        <br />
+        <button onclick="largest_second_large()">Click me</button>
+        <br />
+        <br />
+        <h4 id="result"></h4>
+    </body>
+    <script>
+        function largest_second_large() {
+            let a = Number(document.getElementById("first").value);
+            let b = Number(document.getElementById("second").value);
+            let c = Number(document.getElementById("third").value);
+            let result = document.getElementById("result");
+            var largest;
+            var second_largest;
+            if (a >= b && a >= c) {
+                largest = a;
+                second_largest = b >= c ? b : c;
+            } else if (b >= a && b >= c) {
+                largest = b;
+                second_largest = a >= c ? a : c;
+            } else {
+                largest = c;
+                second_largest = a >= b ? a : b;
+            }
+
+            result.innerHTML =
+                "Largest = " + largest + ", second largest = " + second_largest;
+        }
+    </script>
+</html>

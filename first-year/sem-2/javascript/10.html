@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <body>
+        <h3>Student's Info</h3>
+        <label for="name">Enter Your Name: </label>
+        <input id="name" type="text" />
+        <br />
+        <label for="rollNumber">Enter Your Roll Number: </label>
+        <input id="rollNumber" type="number" />
+        <br />
+        <hr />
+        <h3>Subject Marks</h3>
+        <label for="maths">Math Marks: </label>
+        <input id="maths" type="number" />
+        <br />
+        <label for="english">English Marks: </label>
+        <input id="english" type="number" />
+        <br />
+        <label for="science">Science Marks: </label>
+        <input id="science" type="number" />
+        <br />
+        <label for="hindi">Hindi Marks: </label>
+        <input id="hindi" type="number" />
+        <br />
+        <label for="sst">Social Science Marks: </label>
+        <input id="sst" type="number" />
+        <br />
+        <label for="computer">Computer Marks: </label>
+        <input id="computer" type="number" />
+        <br />
+        <button onclick="calculate()">Calculate Result</button>
+        <br />
+        <br />
+        <h4 id="result"></h4>
+    </body>
+    <script>
+        function calculate() {
+            let name = document.getElementById("name").value;
+            let subjects = [
+                "maths",
+                "english",
+                "science",
+                "hindi",
+                "sst",
+                "computer",
+            ];
+            let total = 0;
+            let grade;
+            for (let sub of subjects) {
+                total += Number(document.getElementById(sub).value);
+            }
+            console.log(total);
+            let percentage = (total / 600) * 100;
+            let result = document.getElementById("result");
+            result.style.color = "white";
+            result.style.padding = "10px";
+
+            if (percentage >= 85) {
+                grade = "A";
+            } else if (percentage >= 75) {
+                grade = "B";
+            } else if (percentage >= 65) {
+                grade = "C";
+            } else if (percentage >= 55) {
+                grade = "D";
+            } else if (percentage >= 33) {
+                grade = "E";
+            } else {
+                grade = "Failed";
+            }
+
+            if (grade == "Failed") {
+                result.innerHTML = "Student " + name + " got " + grade;
+                result.style.backgroundColor = "red";
+            } else if (percentage > 90) {
+                result.innerHTML = "Student " + name + " got " + grade;
+                result.style.backgroundColor = "yellow";
+                result.style.color = "black";
+            } else {
+                result.innerHTML =
+                    "Student " +
+                    name +
+                    " got " +
+                    grade +
+                    " and " +
+                    percentage.toFixed(2) +
+                    " %";
+                result.style.backgroundColor = "Green";
+            }
+        }
+    </script>
+</html>

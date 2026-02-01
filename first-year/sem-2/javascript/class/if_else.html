@@ -1,0 +1,31 @@
+<html>
+  <head></head>
+  <body>
+    <h1 class="h1" id="heading-1">
+      100
+    </h1>
+    <h1 class="p1" id="para-1">
+      0
+    </h1>
+  </body>
+  <script>
+    let h = document.getElementById("heading-1");
+    console.log("previous value:" + h.innerText);
+    if (h.innerText == "0"){
+      h.innerText="1";
+      console.log("new value:" + h.innerText);
+    }
+    else if(h.innerText=="10"){
+      h.innerText="3"
+        console.log("new value:" + h.innerText);
+    }
+    else if(h.innerText=="100"){
+      h.innerText="10"
+        console.log("new value:" + h.innerText);
+    }
+    else{
+          h.innerText="2"
+          console.log("new value:" + h.innerText);
+        }
+  </script>
+</html>

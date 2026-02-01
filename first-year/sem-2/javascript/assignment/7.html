@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <input type="number" placeholder="enter first side" id="a" />
+        <input type="number" placeholder="enter second side" id="b" />
+        <input type="number" placeholder="enter third side" id="c" />
+        <button onclick="check()">reveal answer</button>
+        <br />
+        <br />
+        <h4 id="answer"></h4>
+    </body>
+    <script>
+        function check() {
+            let a = Number(document.getElementById("a").value);
+            let b = Number(document.getElementById("b").value);
+            let c = Number(document.getElementById("c").value);
+            let answer = document.getElementById("answer");
+            let sorted = [a, b, c].sort((x, y) => x - y);
+            let x = sorted[0];
+            let y = sorted[1];
+            let z = sorted[2];
+
+            if (x + y <= z) {
+                alert("not a valid triangle!");
+                return;
+            }
+
+            if (x !== y && y !== z) {
+                answer.innerHTML = "Scalene";
+                answer.style.color = "purple";
+            }
+            if (x == y && y == z && x == z) {
+                answer.innerHTML = "Equilateral";
+                answer.style.color = "green";
+            }
+            if (x ** 2 + y ** 2 == z ** 2) {
+                answer.innerHTML = "Right-angled";
+                answer.style.color = "orange";
+            }
+        }
+    </script>
+</html>

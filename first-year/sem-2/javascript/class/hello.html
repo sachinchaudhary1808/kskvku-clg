@@ -1,0 +1,37 @@
+<!--learning DOM-->
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 class="p1" id="heading-1">This is a Paragraph</h1>
+        <p class="p1">this is a paragraph too</p>
+        <p>something is not here</p>
+        <input
+            type="submit"
+            onclick="document.getElementById('heading-1').innerHTML = '<strike>This is a Paragraph</strike>';"
+        />
+        <input
+            type="submit"
+            onclick=' document.getElementById("heading0").style.color = "blue";document.getElementById("heading-1").style.background = "pink";        document.getElementById("div-1").style.border = "10px solid #531223";
+'
+        />
+        <input
+            type="reset"
+            onclick=' document.getElementById("heading-1").style.color = "black";document.getElementById("heading-1").style.background = "white";        document.getElementById("div-1").style.border = "0px solid #531223";
+'
+        />
+        <div id="div-1"><p class="p1">this is a paragraph too</p></div>
+    </body>
+    <script>
+        console.log(document.querySelectorAll("h1#heading-1"));
+        console.log(document.querySelectorAll(".p1"));
+        console.log(document.querySelectorAll("p"));
+        console.log(document.querySelectorAll("p"));
+        // document.getElementById("heading-1").innerHTML="<strike>This is a heading<strike>";
+        // document.getElementById("heading-1").innerText="<i>This<i> is a heading, see here!";
+        document.getElementById("div-1").style.border = "200px solid #333391";
+        document.getElementById("div-1").style.borderWidth = "10px";
+    </script>
+</html>

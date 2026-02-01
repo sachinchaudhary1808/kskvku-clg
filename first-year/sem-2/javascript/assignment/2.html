@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html >
+    <head>
+    </head>
+    <body>
+        <input type="text" id="myText" placeholder="Type here">
+        <button onclick="showText()">Click Me</button>
+        <br>
+        <p id="text">Type something in the box<p>
+    </body>
+    <script>
+        function showText(){
+            value = document.getElementById("myText").value;
+            document.getElementById("text").innerHTML = value;
+        }
+    </script>
+</html>

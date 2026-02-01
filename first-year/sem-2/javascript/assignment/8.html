@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <input
+            type="number"
+            id="radius"
+            placeholder="Enter radius of the circle"
+        />
+
+        <button onclick="area_circumference()">
+            calculate area and circumference
+        </button>
+        <br />
+        <br />
+        <h4 id="result">Result:</h4>
+    </body>
+    <script>
+        function area_circumference() {
+            let radius = Number(document.getElementById("radius").value);
+            let result = document.getElementById("result");
+            let circumference = Math.PI * radius * 2;
+            let area = Math.PI * radius * radius;
+            result.innerHTML =
+                "Result: Circumference = " +
+                circumference.toFixed(2) +
+                ", area = " +
+                area.toFixed(2);
+            result.style.color = "aqua";
+        }
+    </script>
+</html>

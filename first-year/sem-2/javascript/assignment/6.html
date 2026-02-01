@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+    <body>
+        <h3>Calculator</h3>
+        <input type="number" id="button_1" placeholder="first number...">
+        <br>
+        <br>
+        <input type="number" id="button_2" placeholder="second number...">
+        <br>
+        <br>
+
+        <button onclick="add()">Addition</button>
+        <button onclick="subtract()">Subtraction</button>
+        <button onclick="multiply()">Multiplication</button>
+        <button onclick="devide()">Division</button>
+        <button onclick="modulo()">Modulo</button>
+
+        <br>
+        <br>
+        <p id="text"></p>
+    </body>
+
+    <script>
+        function getValues(){
+            return [
+                Number(document.getElementById("button_1").value),
+                Number(document.getElementById("button_2").value)
+            ];
+        }
+
+        function add(){
+            let [a,b]= getValues();
+            text.innerHTML = a+b;
+        }
+        function subtract(){
+            let [a,b]= getValues();
+            text.innerHTML = a-b;
+        }
+        function multiply(){
+            let [a,b]= getValues();
+            text.innerHTML = a*b;
+        }
+        function devide(){
+            let [a,b]= getValues();
+            text.innerHTML = a/b;
+        }
+        function modulo(){
+            let [a,b]= getValues();
+            text.innerHTML = a%b;
+        }
+
+
+
+
+
+    </script>
+</html>
