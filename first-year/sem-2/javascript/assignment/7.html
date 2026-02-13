@@ -24,17 +24,15 @@
                 return;
             }
 
-            if (x !== y && y !== z) {
-                answer.innerHTML = "Scalene";
-                answer.style.color = "purple";
-            }
-            if (x == y && y == z && x == z) {
+            if (x == y && y == z) {
                 answer.innerHTML = "Equilateral";
                 answer.style.color = "green";
-            }
-            if (x ** 2 + y ** 2 == z ** 2) {
+            } else if (x ** 2 + y ** 2 == z ** 2) {
                 answer.innerHTML = "Right-angled";
                 answer.style.color = "orange";
+            } else if (x !== y && y !== z && x !== z) {
+                answer.innerHTML = "Scalene";
+                answer.style.color = "purple";
             }
         }
     </script>

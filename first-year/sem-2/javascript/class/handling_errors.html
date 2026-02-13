@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <body>
+        <input type="text" id="name" onblur="check()" />
+    </body>
+    <script>
+        function check() {
+            let name = document.getElementById("name");
+            try {
+                if (name.value.length > 5) {
+                    throw new Error("Name can not be greater then 5 character");
+                } else if (name.value.length == 1) {
+                    throw new Error("Name can not be of 1 character");
+                }
+            } catch (error) {
+                alert(error);
+            } finally {
+                console.log("khallash");
+            }
+        }
+    </script>
+</html>

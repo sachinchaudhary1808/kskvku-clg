@@ -1,25 +1,49 @@
-<!DOCTYPE html>
-<html >
+<!doctype html>
+<html>
     <body>
         <h3>Calculator</h3>
-        <input type="number" id="button_1" placeholder="first number...">
-        <br>
-        <br>
-        <input type="number" id="button_2" placeholder="second number...">
-        <br>
-        <br>
+        <input type="number" id="button_1" placeholder="first number..." />
+        <br />
+        <br />
+        <input type="number" id="button_2" placeholder="second number..." />
+        <br />
+        <br />
 
-        <button onclick="document.getElementById('text').innerHTML = Number(document.getElementById('button_1').value) + Number(document.getElementById('button_2').value)">Addition</button>
-        <button onclick="document.getElementById('text').innerHTML = Number(document.getElementById('button_1').value) - Number(document.getElementById('button_2').value)">Subtraction</button>
-        <button onclick="document.getElementById('text').innerHTML = Number(document.getElementById('button_1').value) * Number(document.getElementById('button_2').value)">Multiplication</button>
-        <button onclick="document.getElementById('text').innerHTML = Number(document.getElementById('button_1').value) / Number(document.getElementById('button_2').value)">Division</button>
-        <button onclick="document.getElementById('text').innerHTML = Number(document.getElementById('button_1').value) % Number(document.getElementById('button_2').value)">Modulo</button>
+        <button onclick="calculate('add')">Addition</button>
+        <button onclick="calculate('sub')">Subtraction</button>
+        <button onclick="calculate('mul')">Multiplication</button>
+        <button onclick="calculate('div')">Division</button>
+        <button onclick="calculate('mod')">Modulo</button>
 
-        <br>
-        <br>
+        <br />
+        <br />
         <p id="text"></p>
     </body>
-
     <script>
+        function calculate(op) {
+            let a = Number(document.getElementById("button_1").value);
+            let b = Number(document.getElementById("button_2").value);
+            let text = document.getElementById("text");
+            let result;
+
+            switch (op) {
+                case "add":
+                    result = a + b;
+                    break;
+                case "sub":
+                    result = a - b;
+                    break;
+                case "mul":
+                    result = a * b;
+                    break;
+                case "div":
+                    result = b ? a / b : "Can not devide by zero";
+                    break;
+                case "mod":
+                    result = a % b;
+            }
+
+            text.innerHTML = result;
+        }
     </script>
 </html>

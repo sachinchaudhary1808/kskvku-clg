@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>
+            .first {
+                transition: 3ms ease-in-out;
+            }
+        </style>
+    </head>
+    <body>
+        <img
+            src="1.jpg"
+            width="1280"
+            height="1920"
+            id="first"
+            onmouseover="changeImage('2.jpg','first')"
+            onmouseout="changeImage('3.png','first')"
+        />
+    </body>
+    <script>
+        function changeImage(img, id) {
+            document.getElementById(id).src = img;
+            if (img === "3.png") {
+                document.getElementById(id).style.border = "5px solid red";
+            }
+        }
+    </script>
+</html>
