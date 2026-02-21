@@ -15,3 +15,5 @@ elif unit <= 250:
     bill = unit * 4.15
 else:
     bill = unit * 5.20
+
+print(bill)

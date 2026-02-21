@@ -15,5 +15,5 @@ width = int(input("enter the width of rectangle: "))
 
 rect = AreaPerimeter(length, width)
 
-print("Perimeter", calc.perimeter())
-print("Area", calc.area())
+print("Perimeter", rect.perimeter())
+print("Area", rect.area())

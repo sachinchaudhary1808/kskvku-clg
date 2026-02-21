@@ -7,8 +7,8 @@ class Person:
 
 
 person1 = Person("sachin")
-person1 = Person("coco")
-person1 = Person("jose")
-person1 = Person("cooki")
+person2 = Person("coco")
+person3 = Person("jose")
+person4 = Person("cooki")
 
 print(Person.count)

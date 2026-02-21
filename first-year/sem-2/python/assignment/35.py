@@ -9,4 +9,4 @@ class Calculator:
 
 calc = Calculator()
 
-print(add.displaySum(1, 5))
+print(calc.displaySum(1, 5))
