@@ -1,0 +1,240 @@
+<html>
+    <head>
+        <title>Form</title>
+    </head>
+    <body>
+        <h2>Form</h2>
+
+        <form onsubmit="return validationForm()">
+            Name:
+            <input
+                type="text"
+                id="name"
+                onkeyup="checkName()"
+                onblur="checkName()"
+            />
+            <br />
+            <span id="nameError" style="color: red"></span>
+            <br /><br />
+
+            Surname:
+            <input
+                type="text"
+                id="surName"
+                onkeyup="checkSurName()"
+                onblur="checkSurName()"
+            />
+            <br />
+            <span id="surNameError" style="color: red"></span>
+            <br /><br />
+
+            Email:
+            <input
+                type="text"
+                id="email"
+                onkeyup="checkEmail()"
+                onblur="checkEmail()"
+            />
+            <br />
+            <span id="emailError" style="color: red"></span>
+            <br /><br />
+
+            Phone number:
+            <input type="tel" id="phoneNumber" onblur="checkPhone()" />
+            <br />
+            <span id="phoneError" style="color: red"></span>
+            <br /><br />
+
+            Gender:
+            <input
+                type="radio"
+                name="gender"
+                value="male"
+                onclick="checkGender()"
+            />Male
+            <input
+                type="radio"
+                name="gender"
+                value="female"
+                onclick="checkGender()"
+            />Female
+            <input
+                type="radio"
+                name="gender"
+                value="other"
+                onclick="checkGender()"
+            />Other
+            <br />
+            <span id="genderError" style="color: red"></span>
+            <br /><br />
+
+            Password:
+            <input type="password" id="passwd" onblur="checkPassword()" />
+            <span id="passwdError" style="color: red"></span>
+            <br /><br />
+
+            Confirm password:
+            <input
+                type="password"
+                id="confirmPasswd"
+                onblur="checkPassword()"
+            />
+            <span id="confirmPasswdError" style="color: red"></span>
+            <br /><br />
+
+            City:
+            <input type="text" id="city" onblur="checkCity()" />
+            <span id="cityError" style="color: red"></span>
+            <br /><br />
+
+            <input type="submit" value="Submit" />
+        </form>
+
+        <script>
+            function checkName() {
+                const name = document.getElementById("name").value;
+                const error = document.getElementById("nameError");
+
+                if (name === "") {
+                    error.innerHTML = "This field is required";
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function checkSurName() {
+                const surName = document.getElementById("surName").value;
+                const error = document.getElementById("surNameError");
+
+                if (surName === "") {
+                    error.innerHTML = "This field is required";
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function checkEmail() {
+                const email = document.getElementById("email").value;
+                const error = document.getElementById("emailError");
+                const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+                if (email === "") {
+                    error.innerHTML = "Email is required";
+                    return false;
+                } else if (!pattern.test(email)) {
+                    error.innerHTML = "Invalid email";
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function checkPhone() {
+                const number = document.getElementById("phoneNumber").value;
+                const error = document.getElementById("phoneError");
+                const pattern = /^[0-9]{10}$/;
+
+                if (number === "") {
+                    error.innerHTML = "Phone number is required";
+                    return false;
+                } else if (!pattern.test(number)) {
+                    alert("Phone number must be exactly 10 digits");
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function checkGender() {
+                const genders = document.getElementsByName("gender");
+                const error = document.getElementById("genderError");
+                let selected = false;
+
+                for (let i = 0; i < genders.length; i++) {
+                    if (genders[i].checked) {
+                        selected = true;
+                        break;
+                    }
+                }
+
+                if (!selected) {
+                    error.innerHTML = "Please select a gender";
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function checkPassword() {
+                const password1 = document.getElementById("passwd").value;
+                const password2 =
+                    document.getElementById("confirmPasswd").value;
+                const error1 = document.getElementById("passwdError");
+                const error2 = document.getElementById("confirmPasswdError");
+
+                if (password1 === "") {
+                    error1.innerHTML = "Password is required";
+                    return false;
+                }
+
+                if (password2 === "") {
+                    error2.innerHTML = "Please confirm your password";
+                    return false;
+                }
+
+                if (password1 !== password2) {
+                    error2.innerHTML = "Passwords do not match";
+                    return false;
+                }
+
+                error1.innerHTML = "";
+                error2.innerHTML = "";
+                return true;
+            }
+
+            function checkCity() {
+                const city = document.getElementById("city").value;
+                const error = document.getElementById("cityError");
+
+                if (city === "") {
+                    error.innerHTML = "City is required";
+                    return false;
+                } else {
+                    error.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function validationForm() {
+                if (
+                    !checkName() ||
+                    !checkSurName() ||
+                    !checkEmail() ||
+                    !checkPhone() ||
+                    !checkGender() ||
+                    !checkPassword() ||
+                    !checkCity()
+                ) {
+                    return false;
+                }
+
+                let result = confirm(
+                    "Are you sure you want to submit the form?",
+                );
+                if (!result) {
+                    return false;
+                }
+
+                window.location.href = "another.html";
+                return false;
+            }
+        </script>
+    </body>
+</html>

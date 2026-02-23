@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <button id="fadeIn">fadeIn</button>
+        <button id="fadeOut">fadeOut</button>
+        <button id="fadeToggle">FadeToggle</button>
+        <div id="box">This is a Div</div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $("#fadeIn").click(function () {
+                $("#box").fadeIn();
+            });
+            $("#fadeOut").click(function () {
+                $("#box").fadeOut();
+            });
+            $("#fadeToggle").click(function () {
+                $("#box").fadeToggle();
+            });
+        });
+    </script>
+</html>
