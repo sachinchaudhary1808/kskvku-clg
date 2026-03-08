@@ -1,25 +1,29 @@
 # Strength
-curosity
+Go getter Head strong
+curiosity
 exploring
 helping
 non conformist
-approchable
+approachable
 witty
-knowladge of linux and tech support 
+knowledge of linux and tech support 
 # Weakness
 impulsive
-unsocial
+Stubborn
+Lack of ambition 
 unpunctual
 inconsistent
 lack of interest
 stage fright 
 # Opportunity
-activisam
+activism
 be an example 
 opportunity to guide others
 debate 
+Capable of independent learning
 # Threats
-maths
+math
 need for flexibility
 emotional sensitivity
 unclear goals
+Closing up ( improving )

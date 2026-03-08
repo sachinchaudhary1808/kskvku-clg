@@ -120,7 +120,7 @@
             function checkEmail() {
                 const email = document.getElementById("email").value;
                 const error = document.getElementById("emailError");
-                const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                const pattern =/^[^\s@]+@[^\s@]+\.[^\s@]+$/ 
 
                 if (email === "") {
                     error.innerHTML = "Email is required";
