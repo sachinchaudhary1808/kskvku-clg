@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>JQUERY ADD & Remove Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<h1>jQuery Add & Remove function example</h1>
+
+<input type="text" id="item" placeholder="Enter the item">
+<br><br>
+
+<button id="addbtn">Add New Item</button>
+<button id="removebtn">Remove Last Item</button>
+<button id="removebynamebtn">Remove By Name</button>
+
+<ul id="mylist">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<script>
+$(document).ready(function() {
+
+    // Add new item
+    $("#addbtn").click(function() {
+        var value = $("#item").val();
+
+        if (value === "") {
+            alert("Please enter something!");
+        } else {
+            $("#mylist").append("<li>" + value + "</li>");
+            $("#item").val("");
+        }
+    });
+
+    // Remove last item
+    $("#removebtn").click(function() {
+        $("#mylist li:last").remove();
+    });
+
+    // Remove by name
+    $("#removebynamebtn").click(function() {
+        var value = $("#item").val().toLowerCase();
+        var found = false;
+
+        $("#mylist li").each(function() {
+            if ($(this).text().toLowerCase() === value) {
+                $(this).remove();
+                found = true;
+                return false; // stop loop
+            }
+        });
+
+        if (!found) {
+            alert("Item not found!");
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

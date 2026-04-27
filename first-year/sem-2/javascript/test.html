@@ -1,56 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<body>
     <head>
+        <script src="script.js"></script>
     </head>
-    <body>
-        first: <input id="first" type="number">
-        <br>
-        second: <input id="second" type="number">
-        <br>
-        third: <input id="third" type="number">
-        <br>
-        <br>
-        <button onclick="ans()">Find</button>
-    </body>
-    <script>
-        function ans(){
-            let first = Number(document.getElementById("first").value);
-            let second = Number(document.getElementById("second").value);
-            let third = Number(document.getElementById("third").value);
 
-            let second_large;
-            let small;
-
-            if(first >= second && first >= third){
-                if (second >= third){
-                    second_large = second;
-                    small = third;
-                }else{
-                    second_large = third;
-                    small = second;
-                }
-            } else if (second >= first && second >= third){
-                if (first >= third){
-                    second_large = first;
-                    small = third;
-                }else{
-                    second_large = third;
-                    small = first;
-                }
-            } else if (third >= first && third >= second){
-                if (second >= first){
-                    second_large = second;
-                    small = first;
-            }else{
-                    second_large = first;
-                    small = second;
-            }
+<h1>Internal JS</h1>
 
 
-            alert("Second: " + second_large + " small: " + small);
-
-        }
-
-        }
-    </script>
+</body>
 </html>

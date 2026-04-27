@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form validation</title>
+
+        <style>
+            span {
+                color: red;
+                font-size: 12px;
+            }
+            body {
+                background-color: blanchedalmond;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .container {
+                width: 600px;
+                margin: 50px auto;
+                padding: 20px;
+                background: white;
+                border-radius: 8px;
+            }
+            h2 {
+                text-align: center;
+            }
+            input, select {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>form</h2>
+
+            <form id="myForm">
+                Name:
+                <input type="text" id="name" />
+                <span id="nameError"></span>
+
+                Surname:
+                <input type="text" id="surname" />
+                <span id="surnameError"></span>
+
+                Email:
+                <input type="email" id="email" />
+                <span id="emailError"></span>
+
+                Phone number:
+                <input type="number" id="phone" />
+                <span id="phoneError"></span>
+
+                Gender:
+                <input type="radio" name="gender" value="male" /> Male
+                <input type="radio" name="gender" value="female" /> Female
+                <input type="radio" name="gender" value="other" /> Other
+                <br />
+                <span id="genderError"></span>
+
+                Password:
+                <input type="password" id="pass1" />
+
+                Confirm password:
+                <input type="password" id="pass2" />
+                <span id="passError"></span>
+
+                Country:
+                <select id="country">
+                    <option value="">select country</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                </select>
+                <span id="countryError"></span>
+
+                City:
+                <select id="city">
+                    <option value="">Select City</option>
+                </select>
+                <span id="cityError"></span>
+
+                <br /><br />
+                <button type="submit" id="submitBtn">Submit</button>
+            </form>
+        </div>
+
+        <script>
+            const form = document.getElementById("myForm");
+            const submitBtn = document.getElementById("submitBtn");
+
+            const nameInput = document.getElementById("name");
+            const surnameInput = document.getElementById("surname");
+            const emailInput = document.getElementById("email");
+            const phoneInput = document.getElementById("phone");
+            const pass1 = document.getElementById("pass1");
+            const pass2 = document.getElementById("pass2");
+            const country = document.getElementById("country");
+            const city = document.getElementById("city");
+
+            function setError(id, msg) {
+                document.getElementById(id).innerText = msg;
+            }
+
+            function checkName() {
+                if (nameInput.value === "") {
+                    setError("nameError", "Required");
+                    submitBtn.style.display = "none";
+                    return false;
+                }
+                setError("nameError", "");
+                submitBtn.style.display = "block";
+                return true;
+            }
+
+            function checkSurname() {
+                if (surnameInput.value === "") {
+                    setError("surnameError", "Required");
+                    return false;
+                }
+                setError("surnameError", "");
+                return true;
+            }
+
+            function checkEmail() {
+                let val = emailInput.value;
+                let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (val === "") {
+                    setError("emailError", "Required");
+                    emailInput.style.border = "";
+                    return false;
+                }
+
+                if (!pattern.test(val)) {
+                    setError("emailError", "Invalid Email");
+                    emailInput.style.border = "2px solid red";
+                    return false;
+                }
+
+                setError("emailError", "");
+                emailInput.style.border = "2px solid green";
+                return true;
+            }
+
+            function checkPhone() {
+                let val = phoneInput.value;
+                let pattern = /^[0-9]{10}$/;
+
+                if (val === "") {
+                    setError("phoneError", "Required");
+                    return false;
+                }
+
+                if (!pattern.test(val)) {
+                    setError("phoneError", "Invalid number");
+                    submitBtn.style.opacity = "0";
+                    return false;
+                }
+
+                setError("phoneError", "");
+                submitBtn.style.opacity = "1";
+                return true;
+            }
+
+            function checkGender() {
+                const checked = document.querySelector("input[name='gender']:checked");
+                if (!checked) {
+                    setError("genderError", "Please select gender!");
+                    return false;
+                }
+                setError("genderError", "");
+                return true;
+            }
+
+            function checkPass() {
+                if (pass1.value === "") {
+                    setError("passError", "Required");
+                    return false;
+                }
+
+                if (pass2.value === "") {
+                    setError("passError", "Required");
+                    return false;
+                }
+
+                if (pass1.value !== pass2.value) {
+                    setError("passError", "Password doesn't match");
+                    return false;
+                }
+
+                setError("passError", "");
+                return true;
+            }
+
+            // EVENTS (like jQuery .on)
+            nameInput.addEventListener("keyup", checkName);
+            nameInput.addEventListener("blur", checkName);
+
+            surnameInput.addEventListener("keyup", checkSurname);
+            surnameInput.addEventListener("blur", checkSurname);
+
+            emailInput.addEventListener("change", checkEmail);
+            emailInput.addEventListener("blur", checkEmail);
+
+            phoneInput.addEventListener("blur", checkPhone);
+
+            document.querySelectorAll("input[name='gender']").forEach(el => {
+                el.addEventListener("click", checkGender);
+            });
+
+            pass1.addEventListener("blur", checkPass);
+            pass2.addEventListener("blur", checkPass);
+
+            country.addEventListener("change", function () {
+                city.innerHTML = "<option value=''>Select City</option>";
+
+                if (country.value === "india") {
+                    city.innerHTML += "<option>Ahemdabad</option>";
+                    city.innerHTML += "<option>Bhuj</option>";
+                }
+
+                if (country.value === "usa") {
+                    city.innerHTML += "<option>New York</option>";
+                    city.innerHTML += "<option>Chicago</option>";
+                }
+            });
+
+            form.addEventListener("submit", function (e) {
+                let ok =
+                    checkName() &&
+                    checkSurname() &&
+                    checkEmail() &&
+                    checkPhone() &&
+                    checkGender() &&
+                    checkPass();
+
+                if (!ok) {
+                    alert("plz complete the form requirements!");
+                    e.preventDefault();
+                } else {
+                    alert("Form submitted");
+                }
+            });
+        </script>
+    </body>
+</html>

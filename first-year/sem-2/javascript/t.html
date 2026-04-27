@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form - All 8 JS Concepts</title>
+<style></style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Student Registration Form</h1>
+  <p class="subtitle">All 8 JavaScript form concepts demonstrated</p>
+
+  <div id="success-box" class="success-box">
+    ✅ Form submitted successfully! All validations passed.
+  </div>
+
+  <!-- ============================
+       1. JUMP MENU
+  ============================= -->
+  <div class="section">
+    <div class="section-title">
+      Navigation
+      <span class="badge">1. Jump Menu</span>
+    </div>
+    <div class="row">
+      <label for="jump-menu">Go to section</label>
+      <select id="jump-menu" onchange="jumpTo(this.value)">
+        <option value="">-- Select a section --</option>
+        <option value="personal">Personal Details</option>
+        <option value="course">Course Selection</option>
+        <option value="contact">Contact Info</option>
+      </select>
+      <p class="hint">Selecting an option scrolls and highlights that section.</p>
+    </div>
+  </div>
+
+  <!-- ============================
+       2. DYNAMIC MENU
+  ============================= -->
+  <div class="section" id="course">
+    <div class="section-title">
+      Course Selection
+      <span class="badge">2. Dynamic Menu</span>
+    </div>
+    <div class="two-col">
+      <div class="row" id="f-dept">
+        <label for="dept">Department <span style="color:red">*</span></label>
+        <select id="dept" onchange="loadCourses()">
+          <option value="">Select department</option>
+          <option value="cs">Computer Science</option>
+          <option value="maths">Mathematics</option>
+          <option value="arts">Arts</option>
+        </select>
+        <span class="error" id="e-dept">Please select a department.</span>
+      </div>
+      <div class="row" id="f-course">
+        <label for="course">Course <span style="color:red">*</span></label>
+        <select id="course">
+          <option value="">Select department first</option>
+        </select>
+        <span class="error" id="e-course">Please select a course.</span>
+      </div>
+    </div>
+    <p class="hint">Course list updates dynamically based on chosen department.</p>
+  </div>
+
+  <!-- ============================
+       3. REQUIRED FIELDS  +  5. INFORMATIVE ERRORS
+  ============================= -->
+  <div class="section" id="personal">
+    <div class="section-title">
+      Personal Details
+      <span class="badge">3. Requiring Fields &amp; 5. Informative Errors</span>
+    </div>
+    <div class="two-col">
+      <div class="row" id="f-fname">
+        <label for="fname">First name <span style="color:red">*</span></label>
+        <input type="text" id="fname" placeholder="e.g. Riya" oninput="liveSync()">
+        <span class="error" id="e-fname">First name is required.</span>
+      </div>
+      <div class="row" id="f-lname">
+        <label for="lname">Last name <span style="color:red">*</span></label>
+        <input type="text" id="lname" placeholder="e.g. Sharma" oninput="liveSync()">
+        <span class="error" id="e-lname">Last name is required.</span>
+      </div>
+    </div>
+    <div class="row" id="f-dob">
+      <label for="dob">Date of birth <span style="color:red">*</span></label>
+      <input type="date" id="dob">
+      <span class="error" id="e-dob">Date of birth is required.</span>
+    </div>
+  </div>
+
+  <!-- ============================
+       4. CROSS-CHECKING FIELDS
+  ============================= -->
+  <div class="section">
+    <div class="section-title">
+      Set Password
+      <span class="badge">4. Cross-checking Fields</span>
+    </div>
+    <div class="two-col">
+      <div class="row" id="f-pass">
+        <label for="pass">Password <span style="color:red">*</span></label>
+        <input type="password" id="pass" placeholder="Min 6 characters">
+        <span class="error" id="e-pass">Password must be at least 6 characters.</span>
+      </div>
+      <div class="row" id="f-pass2">
+        <label for="pass2">Confirm password <span style="color:red">*</span></label>
+        <input type="password" id="pass2" placeholder="Re-enter password">
+        <span class="error" id="e-pass2">Passwords do not match.</span>
+      </div>
+    </div>
+    <p class="hint">Both fields are compared — they must match exactly.</p>
+  </div>
+
+  <!-- ============================
+       6. RADIO BUTTON VERIFICATION
+  ============================= -->
+  <div class="section">
+    <div class="section-title">
+      Gender
+      <span class="badge">6. Verifying Radio Buttons</span>
+    </div>
+    <div class="row" id="f-gender">
+      <label>Select gender <span style="color:red">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="male"> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+        <label><input type="radio" name="gender" value="other"> Other</label>
+      </div>
+      <span class="error" id="e-gender">Please select a gender option.</span>
+    </div>
+  </div>
+
+  <!-- ============================
+       7. SETTING ONE FIELD FROM ANOTHER
+  ============================= -->
+  <div class="section" id="contact">
+    <div class="section-title">
+      Contact Info
+      <span class="badge">7. Setting One Field from Another</span>
+    </div>
+    <div class="row" id="f-fullname">
+      <label for="fullname">Full name (auto-filled)</label>
+      <input type="text" id="fullname" placeholder="Auto-generated from first + last name" readonly>
+      <p class="hint">This field is set automatically as you type your first and last name.</p>
+    </div>
+    <div class="row" id="f-phone">
+      <label for="phone">Phone number <span style="color:red">*</span></label>
+      <input type="tel" id="phone" placeholder="e.g. 9876543210" maxlength="10">
+      <span class="error" id="e-phone">Enter a valid 10-digit phone number.</span>
+    </div>
+  </div>
+
+  <!-- ============================
+       8. EMAIL VERIFICATION
+  ============================= -->
+  <div class="section">
+    <div class="section-title">
+      Email
+      <span class="badge">8. Verifying Email Address</span>
+    </div>
+    <div class="row" id="f-email">
+      <label for="email">Email address <span style="color:red">*</span></label>
+      <input type="text" id="email" placeholder="e.g. student@example.com">
+      <span class="error" id="e-email">Enter a valid email address (e.g. name@domain.com).</span>
+    </div>
+  </div>
+
+  <button class="submit-btn" onclick="validateForm()">Submit Registration</button>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT — All 8 concepts
+============================================================ -->
+<script>
+
+  /* --------------------------------------------------
+     CONCEPT 2: Dynamic Menu
+     Course options change based on selected department
+  -------------------------------------------------- */
+  const courses = {
+    cs:    ["Data Structures", "Web Development", "AI & ML", "Networking"],
+    maths: ["Calculus", "Linear Algebra", "Statistics", "Discrete Math"],
+    arts:  ["Art History", "Photography", "Graphic Design", "Film Studies"]
+  };
+
+  function loadCourses() {
+    var dept = document.getElementById("dept").value;
+    var sel  = document.getElementById("course");
+    if (dept) {
+      sel.innerHTML = courses[dept]
+        .map(function(c){ return '<option value="' + c + '">' + c + '</option>'; })
+        .join("");
+    } else {
+      sel.innerHTML = '<option value="">Select department first</option>';
+    }
+    clearField("f-dept");
+  }
+
+  /* --------------------------------------------------
+     CONCEPT 1: Jump Menu
+     Scrolls to selected section and highlights it
+  -------------------------------------------------- */
+  function jumpTo(id) {
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.style.outline = "2px solid #378ADD";
+      setTimeout(function(){ el.style.outline = ""; }, 1500);
+    }
+  }
+
+  /* --------------------------------------------------
+     CONCEPT 7: Setting one field from another
+     Full name is auto-filled from first + last name
+  -------------------------------------------------- */
+  function liveSync() {
+    var f = document.getElementById("fname").value.trim();
+    var l = document.getElementById("lname").value.trim();
+    document.getElementById("fullname").value = [f, l].filter(Boolean).join(" ");
+  }
+
+  /* --------------------------------------------------
+     Helper: Mark field as valid or invalid
+  -------------------------------------------------- */
+  function setField(id, msg) {
+    var el = document.getElementById(id);
+    el.classList.remove("field-err", "field-ok");
+    if (msg) {
+      el.classList.add("field-err");
+      document.getElementById("e-" + id.replace("f-", "")).textContent = msg;
+    } else {
+      el.classList.add("field-ok");
+    }
+  }
+
+  function clearField(id) {
+    var el = document.getElementById(id);
+    el.classList.remove("field-err", "field-ok");
+  }
+
+  /* --------------------------------------------------
+     CONCEPT 6: Verifying Radio Button Selection
+     Returns selected radio value or empty string
+  -------------------------------------------------- */
+  function getRadio(name) {
+    var r = document.querySelector('input[name="' + name + '"]:checked');
+    return r ? r.value : "";
+  }
+
+  /* --------------------------------------------------
+     CONCEPT 8: Email Verification using Regex
+  -------------------------------------------------- */
+  function validateEmail(email) {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  /* --------------------------------------------------
+     CONCEPT 3, 4, 5: Required Fields, Cross-check,
+     and Informative Error Messages — all on submit
+  -------------------------------------------------- */
+  function validateForm() {
+    var ok = true;
+
+    var fname  = document.getElementById("fname").value.trim();
+    var lname  = document.getElementById("lname").value.trim();
+    var dob    = document.getElementById("dob").value;
+    var dept   = document.getElementById("dept").value;
+    var course = document.getElementById("course").value;
+    var pass   = document.getElementById("pass").value;
+    var pass2  = document.getElementById("pass2").value;
+    var gender = getRadio("gender");                       // Concept 6
+    var phone  = document.getElementById("phone").value.trim();
+    var email  = document.getElementById("email").value.trim();
+
+    /* --- Concept 3 & 5: Required fields with informative errors --- */
+    if (!fname)  { setField("f-fname", "First name is required.");          ok = false; }
+    else           setField("f-fname", "");
+
+    if (!lname)  { setField("f-lname", "Last name is required.");           ok = false; }
+    else           setField("f-lname", "");
+
+    if (!dob)    { setField("f-dob",   "Date of birth is required.");       ok = false; }
+    else           setField("f-dob",   "");
+
+    if (!dept)   { setField("f-dept",  "Please select a department.");      ok = false; }
+    else           setField("f-dept",  "");
+
+    if (!course || course === "Select department first") {
+                   setField("f-course","Please select a course.");          ok = false; }
+    else           setField("f-course","");
+
+    /* --- Concept 4: Cross-checking password fields --- */
+    if (pass.length < 6) {
+                   setField("f-pass",  "Password must be at least 6 characters."); ok = false; }
+    else           setField("f-pass",  "");
+
+    if (pass2 !== pass) {
+                   setField("f-pass2", "Passwords do not match.");          ok = false; }
+    else if (pass.length >= 6)
+                   setField("f-pass2", "");
+
+    /* --- Concept 6: Radio button check --- */
+    if (!gender) { setField("f-gender","Please select a gender option.");   ok = false; }
+    else           setField("f-gender","");
+
+    if (!/^\d{10}$/.test(phone)) {
+                   setField("f-phone", "Enter a valid 10-digit phone number."); ok = false; }
+    else           setField("f-phone", "");
+
+    /* --- Concept 8: Email format check --- */
+    if (!validateEmail(email)) {
+                   setField("f-email", "Enter a valid email address (e.g. name@domain.com)."); ok = false; }
+    else           setField("f-email", "");
+
+    /* --- Show result --- */
+    var box = document.getElementById("success-box");
+    if (ok) {
+      box.style.display = "block";
+      box.scrollIntoView({ behavior: "smooth" });
+    } else {
+      box.style.display = "none";
+    }
+  }
+
+</script>
+</body>
+</html>

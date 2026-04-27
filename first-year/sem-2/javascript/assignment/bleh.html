@@ -1,0 +1,127 @@
+<script>
+$(document).ready(function () {
+
+    // EVENTS
+    $("#name").on("keyup blur", checkName);
+    $("#surname").on("keyup blur", checkSurname);
+    $("#email").on("keyup blur", checkEmail);
+    $("#phone").on("blur", checkPhone);
+    $("input[name='gender']").on("click", checkGender);
+    $("#password, #confirmPassword").on("blur", checkPassword);
+    $("#city").on("blur", checkCity);
+
+    // SUBMIT
+    $("#form").submit(function (e) {
+        e.preventDefault();
+
+        if (
+            !checkName() ||
+            !checkSurname() ||
+            !checkEmail() ||
+            !checkPhone() ||
+            !checkGender() ||
+            !checkPassword() ||
+            !checkCity()
+        ) {
+            return;
+        }
+
+        if (confirm("Submit form?")) {
+            alert("Form submitted!");
+        }
+    });
+
+    // FUNCTIONS
+
+    function checkName() {
+        let val = $("#name").val();
+        if (val === "") {
+            $("#nameError").text("Required");
+            return false;
+        }
+        $("#nameError").text("");
+        return true;
+    }
+
+    function checkSurname() {
+        let val = $("#surname").val();
+        if (val === "") {
+            $("#surnameError").text("Required");
+            return false;
+        }
+        $("#surnameError").text("");
+        return true;
+    }
+
+    function checkEmail() {
+        let val = $("#email").val();
+        let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (val === "") {
+            $("#emailError").text("Required");
+            return false;
+        } else if (!pattern.test(val)) {
+            $("#emailError").text("Invalid email");
+            return false;
+        }
+        $("#emailError").text("");
+        return true;
+    }
+
+    function checkPhone() {
+        let val = $("#phone").val();
+        let pattern = /^[0-9]{10}$/;
+
+        if (val === "") {
+            $("#phoneError").text("Required");
+            return false;
+        } else if (!pattern.test(val)) {
+            $("#phoneError").text("Must be 10 digits");
+            return false;
+        }
+        $("#phoneError").text("");
+        return true;
+    }
+
+    function checkGender() {
+        if (!$("input[name='gender']:checked").length) {
+            $("#genderError").text("Select gender");
+            return false;
+        }
+        $("#genderError").text("");
+        return true;
+    }
+
+    function checkPassword() {
+        let p1 = $("#password").val();
+        let p2 = $("#confirmPassword").val();
+
+        if (p1 === "") {
+            $("#passError").text("Required");
+            return false;
+        } else $("#passError").text("");
+
+        if (p2 === "") {
+            $("#confirmError").text("Required");
+            return false;
+        } else if (p1 !== p2) {
+            $("#confirmError").text("Passwords do not match");
+            return false;
+        }
+
+        $("#confirmError").text("");
+        return true;
+    }
+
+    function checkCity() {
+        let val = $("#city").val();
+        if (val === "") {
+            $("#cityError").text("Required");
+            return false;
+        }
+        $("#cityError").text("");
+        return true;
+    }
+
+});
+</script>

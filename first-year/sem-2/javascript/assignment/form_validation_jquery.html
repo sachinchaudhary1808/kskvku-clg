@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>form validation</title>
+        <style>
+            span {
+                color: red;
+                font-size: 12px;
+            }
+            body {
+                background-color: blanchedalmond;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .container {
+                width: 600px;
+                margin: 50px auto;
+                padding: 20px;
+                background: white;
+                border-radius: 8px;
+            }
+            h2 {
+                text-align: center;
+            }
+
+            input {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>form</h2>
+            <form id="myForm">
+                Name: <input type="text" id="name" />
+                <br />
+                <span id="nameError"></span>
+                <br />
+                Surname: <input type="text" id="surname" />
+                <br />
+                <span id="surnameError"></span>
+                <br />
+                Email: <input type="email" id="email" />
+                <br />
+                <span id="emailError"></span>
+                <br />
+                Phone number: <input type="number" id="phone" />
+                <br />
+                <span id="phoneError"></span>
+                <br />
+                Gender: <input type="radio" name="gender" value="male" />Male
+                <input type="radio" name="gender" value="female" />Female
+                <input type="radio" name="gender" value="other" />Other
+                <br />
+                <span id="genderError"></span>
+                <br />
+                Password: <input type="password" id="pass1" />
+                <br />
+                Confrim password: <input type="password" id="pass2" />
+                <br />
+                <span id="passError"></span>
+                <br />
+
+                Country:
+                <select id="country">
+                    <option value="">select country</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                </select>
+                <span id="countryError"></span>
+                <br />
+                City:
+                <select id="city">
+                    <option value="Select City"></option>
+                </select>
+                <span id="cityError"></span>
+
+                <br />
+                <br />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $("#name").on("keyup blur", checkName);
+                $("#surname").on("keyup blur", checkSurname);
+                $("#email").on("change blur", checkEmail);
+                $("#phone").on("blur", checkPhone);
+                $("input[name='gender']").on("click", checkGender);
+                $("#pass2").on("blur", checkPass);
+                $("#pass1").on("blur", checkPass);
+
+                $("#myForm").submit(function (e) {
+                    let name = checkName();
+                    let surname = checkSurname();
+                    let email = checkEmail();
+                    let phone = checkPhone();
+                    let gender = checkGender();
+                    let pass = checkPass();
+                    if (
+                        !name ||
+                        !surname ||
+                        !email ||
+                        !phone ||
+                        !gender ||
+                        !pass
+                    ) {
+                        alert("plz complete the form requirements!");
+                        e.preventDefault();
+                        return false;
+                    }
+                    alert("Form submitted");
+                });
+
+                function checkName() {
+                    let val = $("#name").val();
+                    if (val === "") {
+                        $("button").hide();
+                        $("#nameError").text("Required");
+                        return false;
+                    }
+                    $("button").show();
+                    $("#nameError").text("");
+                    return true;
+                }
+
+                function checkSurname() {
+                    let val = $("#surname").val();
+                    if (val === "") {
+                        $("#surnameError").text("Required");
+                        return false;
+                    }
+                    $("#surnameError").text("");
+                    return true;
+                }
+                function checkEmail() {
+                    let val = $("#email").val();
+                    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    if (val === "") {
+                        $("#emailError").text("Required");
+                        return false;
+                    } else if (!pattern.test(val)) {
+                        $("#email").css("border", "2px solid red");
+                        $("#emailError").text("Invalid Email");
+                        return false;
+                    }
+                    $("#email").css("border", "2px solid green");
+                    $("#emailError").text("");
+                    return true;
+                }
+                function checkPhone() {
+                    let val = $("#phone").val();
+                    let pattern = /^[0-9]{10}$/;
+                    if (val === "") {
+                        $("#phoneError").text("Required");
+                        return false;
+                    } else if (!pattern.test(val)) {
+                        $("button").fadeOut(3000);
+                        $("#phoneError").text("Invalid number");
+                        return false;
+                    }
+                    $("button").fadeIn(3000);
+                    $("#phoneError").text("");
+                    return true;
+                }
+                function checkGender() {
+                    if ($("input[name='gender']:checked").length === 0) {
+                        $("#genderError").text("plz select a gender!");
+                        return false;
+                    } else {
+                        $("#genderError").text("");
+                        return true;
+                    }
+                }
+                function checkPass() {
+                    p1 = $("#pass1").val();
+                    p2 = $("#pass2").val();
+
+                    if (p1 === "") {
+                        $("#passError").text("Required");
+                        return false;
+                    } else {
+                        $("#passError").text("");
+                    }
+
+                    if (p2 === "") {
+                        $("#passError").text("Required");
+                        return false;
+                    } else if (p1 !== p2) {
+                        $("#passError").text("password dosen't match");
+                        return false;
+                    }
+
+                    $("#passError").text("");
+                    return true;
+                }
+
+                $("#country").change(function () {
+                    let country = $(this).val();
+
+                    $("#city").html("<option value=''>Select a City</option>");
+
+                    if (country === "india") {
+                        $("#city").append("<option>Ahemdabad</option>");
+                        $("#city").append("<option>Bhuj</option>");
+                    }
+                    if (country === "usa") {
+                        $("#city").append("<option>New York</option>");
+                        $("#city").append("<option>Chicago</option>");
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
